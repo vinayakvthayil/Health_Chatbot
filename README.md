@@ -34,12 +34,6 @@ An AI-powered healthcare support system utilizing a three-model architecture for
 ```bash
 # Clone the repository
 git clone https://github.com/vinayakvthayil/Health_Chatbot
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up environment variables
-cp .env.example .env
 ```
 
 ## Usage

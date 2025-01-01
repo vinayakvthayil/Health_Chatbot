@@ -1,0 +1,102 @@
+To see step by step generation process 
+
+
+# backend/utils/response_generator.py
+import google.generativeai as genai
+from typing import Dict, List, Optional
+
+class ResponseGenerator:
+    def __init__(self, api_key: str):
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel(
+            model_name="gemini-1.5-pro",
+            generation_config={
+                "temperature": 0.7,
+                "top_p": 0.95,
+                "top_k": 40,
+                "max_output_tokens": 8192,
+            }
+        )
+    
+    async def generate_response(
+        self, 
+        original_query: str, 
+        sub_queries: List[str], 
+        research_results: Dict[str, str],
+        rag_context: Optional[str] = None,
+        user_profile: Optional[Dict] = None,
+        show_process: bool = True
+    ) -> str:
+        """Generate response with visible process if requested"""
+        try:
+            process_log = []
+            
+            # Log the process
+            if show_process:
+                process_log.append("\n=== Query Processing Steps ===\n")
+                
+                # 1. Gemini Flash (Query Decomposition)
+                process_log.append("1. Query Analysis (Gemini Flash):")
+                if sub_queries:
+                    process_log.append("Sub-queries generated:")
+                    for i, query in enumerate(sub_queries, 1):
+                        process_log.append(f"  {i}. {query}")
+                else:
+                    process_log.append("No sub-queries needed for this input.")
+                
+                # 2. Research Search (if performed)
+                process_log.append("\n2. Research Search:")
+                if research_results:
+                    process_log.append("Search results found:")
+                    for query, result in research_results.items():
+                        process_log.append(f"\nFor query: {query}")
+                        process_log.append(f"Result: {result[:200]}...")
+                else:
+                    process_log.append("No research search was needed.")
+                
+                # 3. Local Knowledge (RAG)
+                process_log.append("\n3. Local Knowledge Context:")
+                if rag_context:
+                    process_log.append(rag_context)
+                else:
+                    process_log.append("No relevant local context found.")
+            
+            # Generate final response
+            prompt = f"""As a health advisor, provide a response to the following query.
+Use Chain of Thought reasoning internally but provide a clear, focused final response.
+
+User Query: {original_query}
+
+Context Information:
+{rag_context if rag_context else 'No specific context available.'}
+
+Research Findings:
+{json.dumps(research_results, indent=2) if research_results else 'No research needed.'}
+
+Think through these steps:
+1. Analyze the query and available information
+2. Identify key points to address
+3. Consider any safety concerns
+4. Formulate a helpful response
+
+Then provide a natural, focused response that:
+- Directly answers the question
+- Includes relevant information
+- Maintains a conversational tone
+- Avoids forcing generic health tips
+- Only mentions products if specifically relevant
+
+Response:"""
+
+            final_response = self.model.generate_content(prompt)
+            
+            if show_process:
+                process_log.append("\n=== Final Response ===\n")
+                process_log.append(final_response.text)
+                return "\n".join(process_log)
+            
+            return final_response.text
+            
+        except Exception as e:
+            print(f"Error generating response: {str(e)}")
+            return "I apologize, but I'm having trouble generating a response right now."

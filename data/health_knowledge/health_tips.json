@@ -1,0 +1,19 @@
+{
+    "tips": [
+        {
+            "id": "tip1",
+            "text": "Aim for 7-9 hours of sleep each night for optimal health.",
+            "category": "sleep"
+        },
+        {
+            "id": "tip2",
+            "text": "Stay hydrated by drinking at least 8 glasses of water daily.",
+            "category": "general"
+        },
+        {
+            "id": "tip3",
+            "text": "Regular exercise can improve both sleep quality and sexual health.",
+            "category": "lifestyle"
+        }
+    ]
+}

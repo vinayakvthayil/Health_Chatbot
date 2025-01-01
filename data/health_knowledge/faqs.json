@@ -1,0 +1,16 @@
+{
+    "faqs": [
+        {
+            "id": "faq1",
+            "question": "How can I improve my sleep quality?",
+            "answer": "Maintain a regular sleep schedule, create a relaxing bedtime routine, and avoid screens before bed.",
+            "category": "sleep"
+        },
+        {
+            "id": "faq2",
+            "question": "What are common causes of sleep issues?",
+            "answer": "Common causes include stress, irregular sleep schedule, caffeine, and screen time before bed.",
+            "category": "sleep"
+        }
+    ]
+}

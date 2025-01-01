@@ -1,0 +1,18 @@
+{
+    "products": [
+        {
+            "id": "prod1",
+            "name": "Sleep Support Supplement",
+            "description": "Natural supplement with Melatonin and Magnesium for better sleep.",
+            "category": "sleep",
+            "price": 29.99
+        },
+        {
+            "id": "prod2",
+            "name": "Stress Relief Tea",
+            "description": "Herbal tea blend for relaxation and better sleep.",
+            "category": "wellness",
+            "price": 15.99
+        }
+    ]
+}

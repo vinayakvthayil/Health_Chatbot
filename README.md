@@ -72,9 +72,3 @@ python whatsapp_bot.py
 - Source credibility checks
 - Medical disclaimer injection
 - Warning generation
-
-## Contributors
-- Abhay Gopal 
-- Devanandhan S P
-- Jyothish Krishna S 
-- Vinayak V Thayil 

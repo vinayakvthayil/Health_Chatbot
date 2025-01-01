@@ -29,13 +29,6 @@ An AI-powered healthcare support system utilizing a three-model architecture for
 - Integration: Twilio for WhatsApp
 - AI: Google Gemini and Perplexity Sonar
 
-## Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/vinayakvthayil/Health_Chatbot
-```
-
 ## Usage
 
 ```bash

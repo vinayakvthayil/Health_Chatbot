@@ -1,4 +1,4 @@
-# Health Chatbot
+# Health Chatbot - AI-Powered Personalized Health Assistant
 An AI-powered healthcare support system utilizing a three-model architecture for accurate, safe, and research-backed health assistance.
 
 ## Features

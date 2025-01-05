@@ -29,16 +29,6 @@ An AI-powered healthcare support system utilizing a three-model architecture for
 - Integration: Twilio for WhatsApp
 - AI: Google Gemini and Perplexity Sonar
 
-## Usage
-
-```bash
-# Run the web interface
-python app.py
-
-# Run WhatsApp integration
-python whatsapp_bot.py
-```
-
 ## System Components
 
 **Frontend Features**
